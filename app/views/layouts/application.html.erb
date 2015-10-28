@@ -8,12 +8,22 @@
 </head>
 <body>
   <%= render 'layouts/header' %>
+    <div class="modal fade" id="photoModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+
+                </div><!--/.modal-body-->
+            </div><!-- /.modal-content -->
+        </div> <!-- /.modal dialog -->
+    </div><!--/.modal -->
   <div class="container">
     <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %> </div>
     <% end %>
     <%= yield %>
+
+    <!-- <%= render 'layouts/footer' %> -->
   </div>
-  <%= render 'layouts/footer' %>
 </body>
 </html>
