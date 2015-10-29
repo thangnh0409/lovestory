@@ -1,9 +1,21 @@
-<h1>my album</h1>
+<h1>Albums</h1>
+<div class="row" style="margin: 20px 0px;">
+    <a class="btn btn-primary" href="albums/new">New album
+        <span class="glyphicon glyphicon-plus-sign"></span>
+    </a>
+</div><!--./end row -->
 
-<%= link_to "New album", new_album_path %>
-<ul class="albums">
-<%  @albums.each do |album| %>
-    <li><%= link_to album.name, album %> </li>
-<% end %>
-</ul>
+<div class="row">
+    <% @albums.each do |album| %>
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img src="<%= album.thumbnail_url ? album.thumbnail_url : 'http://www.adriantrimble.com/wp-content/themes/suburbia/images/default-thumbnail.jpg' %>" alt="<%= album.name %>" />
+            </div>
+            <div class="caption">
+                <h3><%= link_to album.name, album %></h3>
+                <p><%= album.description %></p>
+            </div><!--caption-->
+        </div>
+    <% end %>
+</div><!--/.row-->
 

@@ -11,9 +11,9 @@ class PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
     if @photo.save
       flash.now[:notice] = "Uploaded file successful!"
-      redirect_to photos_path
+      redirect_to :back
     else
-      render 'new'
+      render "albums/show"
     end
   end
 
@@ -22,6 +22,8 @@ class PhotosController < ApplicationController
 
 private
   def photo_params
-    params.require(:photo).permit(:name, :attachment)
+    Rails.logger.debug "Params #{params}"
+    params.require(:photo).permit(:name, :attachment, :album_id)
+
   end
 end

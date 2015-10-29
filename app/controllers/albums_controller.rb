@@ -1,14 +1,14 @@
 class AlbumsController < ApplicationController
   def index
-    @albums = Album.all
+    @albums = current_user.get_albums
   end
 
   def new
-    @album = Album.new
+    @album = current_user.albums.build
   end
 
   def create
-    @album = Album.new(album_params)
+    @album = current_user.albums.build(album_params)
     if @album.save
       flash[:info] = "Create ablum success!"
       redirect_to @album
@@ -19,11 +19,12 @@ class AlbumsController < ApplicationController
 
   def show
     @album = Album.where(id: params[:id]).first();
-    @photo = Photo.new
+    @photos = @album.get_photos
+    @photo = @album.photos.build
   end
 
 private
   def album_params
-    params.require(:album).permit(:name, :description)
+    params.require(:album).permit(:name, :description, :thumbnail)
   end
 end
