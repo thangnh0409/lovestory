@@ -1,0 +1,21 @@
+<h1>new album</h1>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <%= form_for @album do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
+            <%= f.label :name %>
+            <%= f.text_field :name, class:'form-control' %>
+            <%= f.label :description %>
+            <%= f.text_area :description, rows:6,  class:'form-control' %>
+            <%= f.label :thumbnail %>
+            <%= f.file_field :thumbnail, class:"file-input" %>
+            <div class="input-group" style="margin-bottom: 10px;">
+                <span class="input-group-btn">
+                    <button class="btn btn-success upload-btn" type="button"> Browse... </button>
+                </span>
+                <input id="file-display" class="input-large uneditable-input form-control" type="text">
+            </div>
+            <%= f.submit "Create new album", class:'btn btn-primary' %>
+        <% end %>
+    </div>
+</div>

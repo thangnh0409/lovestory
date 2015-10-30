@@ -1,5 +1,6 @@
 <h1>All users</h1>
 <ul class="users">
+    <%= will_paginate @users %>
     <% @users.each do |user| %>
         <li>
             <%= gravatar_for user,  size: 50 %>
@@ -10,4 +11,5 @@
             <% end %>
         </li>
     <% end %>
+    <%= will_paginate @users %>
 </ul>
