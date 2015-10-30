@@ -3,7 +3,7 @@
 <div class="row">
     <ul class="photos">
         <% @photos.each do |item| %>
-            <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img class="img-responsive" src="<%= item.attachment_url %>" /></li>
+            <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img class="img-responsive photo-list" src="<%= item.attachment_url %>" /></li>
        <% end %>
     </ul>
 </div>
@@ -13,9 +13,17 @@
         <%= form_for @photo, html: { multipart: true } do |f| %>
             <%= render 'shared/error_messages', object: f.object %>
             <%= f.hidden_field :album_id %>
-            <%= f.label :name %>
-            <%= f.text_field :name %>
-            <%= f.file_field :attachment %>
+            <div class="input-group" style="margin-bottom: 10px;">
+                <span class="input-group-addon">Name</span>
+                <%= f.text_field :name, class:"form-control" %>
+            </div>
+            <%= f.file_field :attachment, class:"file-input"  %>
+            <div class="input-group" style="margin-bottom: 10px;">
+                <span class="input-group-btn">
+                    <button class="btn btn-success upload-btn" type="button"> Browse </button>
+                </span>
+                <input id="file-display" class="input-large uneditable-input form-control" type="text">
+            </div>
             <%= f.submit "Upload", class: "btn btn-primary" %>
         <% end %>
     </div>

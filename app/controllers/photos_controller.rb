@@ -13,7 +13,8 @@ class PhotosController < ApplicationController
       flash.now[:notice] = "Uploaded file successful!"
       redirect_to :back
     else
-      render "albums/show"
+      flash[:danger] = @photo.errors.first[1]
+      redirect_to album_path(id: @photo.album_id)
     end
   end
 

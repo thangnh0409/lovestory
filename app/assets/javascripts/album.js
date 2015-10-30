@@ -64,4 +64,13 @@ $(document).on('click', 'a.control', function(){
 
 });
 
+$(document).on('click', '.upload-btn', function(){
+  console.log("upload button clicked!");
+  $('.file-input').click();
+  $('.file-input').on('change', function(){
+    console.log("file change!");
+    $('#file-display').val($(this).val().replace(/^.*[\\\/]/,  ''));
+  })
+});
+
 })();

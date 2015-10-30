@@ -203,11 +203,28 @@ span.picture {
   float: right;
   text-align: right;
 }
+.control.previous {
+  float:left;
+  text-align: left;
+}
+
 a.control:hover {
   cursor:pointer;
 }
 
 .thumbnail {
   height:190px;
+  overflow:hidden;
+}
+
+input[type="file"] {
+  display:none;
+}
+.file-input {
+  display:none;
+}
+
+.img-responsive.photo-list {
+  height:130px;
   overflow:hidden;
 }
